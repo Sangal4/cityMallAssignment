@@ -17,20 +17,39 @@ const server = createServer(app);
 // Get allowed origins from environment variable or use defaults
 const allowedOrigins = process.env.ALLOWED_ORIGINS 
   ? process.env.ALLOWED_ORIGINS.split(',')
-  : ["http://localhost:3000", "http://localhost:5173"];
+  : [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "https://city-mall-assignment-git-main-sangal4s-projects.vercel.app",
+      "https://city-mall-assignment.vercel.app"
+    ];
 
 // Configure CORS for both Express and Socket.IO
 const corsOptions = {
-  origin: allowedOrigins,
-  methods: ["GET", "POST"],
-  credentials: true
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+  optionsSuccessStatus: 204
 };
 
 app.use(cors(corsOptions));
 
 // Configure Socket.IO with more detailed options
 const io = new Server(server, {
-  cors: corsOptions,
+  cors: {
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+    credentials: true
+  },
   transports: ['websocket', 'polling'],
   pingTimeout: 60000,
   pingInterval: 25000,
