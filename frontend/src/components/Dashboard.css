@@ -1,0 +1,894 @@
+/* Dashboard specific styles */
+.dashboard {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.dashboard-header {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  color: #333;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info span {
+  color: #666;
+  font-weight: 500;
+}
+
+.user-info button {
+  padding: 8px 16px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.user-info button:hover {
+  background: #c82333;
+}
+
+.dashboard-nav {
+  background: white;
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+}
+
+.dashboard-nav button {
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  font-size: 16px;
+  color: #666;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.dashboard-nav button.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+  font-weight: 500;
+}
+
+.dashboard-nav button:hover {
+  background: #f8f9fa;
+  color: #333;
+}
+
+.dashboard-content {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.social-media-monitor {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.monitor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.monitor-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.8em;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+}
+
+.disaster-selector {
+  margin-bottom: 20px;
+}
+
+.disaster-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1em;
+  background-color: white;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.4em;
+}
+
+.report-count, .update-count {
+  background-color: #e2e8f0;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  color: #4a5568;
+}
+
+.reports-list {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.report-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+  color: #000000;
+}
+
+.report-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.report-header strong {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.report-content {
+  font-size: 1.05em;
+  line-height: 1.6;
+  margin: 12px 0;
+  padding: 8px;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.report-meta {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.9em;
+  color: #000000;
+}
+
+.username {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #000000;
+}
+
+.username::before {
+  content: "👤";
+  font-size: 1.1em;
+}
+
+.type {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #000000;
+}
+
+.type:contains("alert")::before { content: "🚨"; }
+.type:contains("need")::before { content: "🆘"; }
+.type:contains("offer")::before { content: "📦"; }
+.type:contains("update")::before { content: "📢"; }
+.type:contains("request")::before { content: "✋"; }
+
+.timestamp {
+  color: #000000;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.timestamp::before {
+  content: "🕒";
+  font-size: 1.1em;
+}
+
+.report-content:contains("NEED"), 
+.report-content:contains("AVAILABLE"),
+.report-content:contains("UPDATE") {
+  position: relative;
+  padding-left: 24px;
+}
+
+.report-content:contains("NEED")::before { 
+  content: "⚡";
+  position: absolute;
+  left: 4px;
+}
+
+.report-content:contains("AVAILABLE")::before { 
+  content: "✅";
+  position: absolute;
+  left: 4px;
+}
+
+.report-content:contains("UPDATE")::before { 
+  content: "📢";
+  position: absolute;
+  left: 4px;
+}
+
+/* Priority Styles */
+.priority {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.priority.critical {
+  background-color: #ef4444;
+  color: white;
+}
+
+.priority.critical::before {
+  content: "🚨";
+}
+
+.priority.high {
+  background-color: #f97316;
+  color: white;
+}
+
+.priority.high::before {
+  content: "HIGH PRIORITY";
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  background-color: #f97316;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.priority.medium {
+  background-color: #0ea5e9;
+  color: white;
+}
+
+.priority.medium::before {
+  content: "UPDATE";
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  background-color: #0ea5e9;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.priority.low {
+  background-color: #22c55e;
+  color: white;
+}
+
+.priority.low::before {
+  content: "INFO";
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  background-color: #22c55e;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Report Item Priority Background Colors */
+.report-item.critical {
+  background-color: #fef2f2;
+  border-color: #ef4444;
+  border-width: 2px;
+  border-style: solid;
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.1);
+}
+
+.report-item.high {
+  background-color: #fff7ed;
+  border: 2px solid #f97316;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+}
+
+.report-item.medium {
+  background-color: #f0f9ff;
+  border: 2px solid #0ea5e9;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+}
+
+.report-item.low {
+  background-color: #f0fdf4;
+  border: 2px solid #22c55e;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1);
+}
+
+/* Loading and No Data States */
+.loading-spinner {
+  text-align: center;
+  padding: 20px;
+  color: #4a5568;
+}
+
+.no-data {
+  text-align: center;
+  padding: 30px;
+  color: #718096;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px dashed #e2e8f0;
+}
+
+/* Welcome Message */
+.welcome-message {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px dashed #e2e8f0;
+}
+
+.welcome-message p {
+  color: #2c3e50;
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.welcome-message ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.welcome-message li {
+  color: #4a5568;
+  margin: 10px 0;
+  font-size: 1em;
+}
+
+/* Animation for Critical Reports */
+@keyframes highlight {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(239, 68, 68, 0.3);
+  }
+}
+
+.report-item.critical {
+  animation: highlight 2s infinite;
+}
+
+/* Meta Information for Critical Reports */
+.report-item.critical .report-meta {
+  border-top: 1px solid rgba(239, 68, 68, 0.2);
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.report-item.critical .username {
+  color: #991b1b;
+  font-weight: 600;
+}
+
+.report-item.critical .type {
+  background-color: #fecaca;
+  color: #991b1b;
+  font-weight: 600;
+}
+
+/* SOS Message Special Styling */
+.report-content:contains("SOS"), 
+.report-content:contains("URGENT"),
+.report-content:contains("EMERGENCY") {
+  font-weight: 600;
+  color: #dc2626;
+  background-color: rgba(239, 68, 68, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Animation for High Priority */
+@keyframes subtle-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 0 6px 16px rgba(249, 115, 22, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+  }
+}
+
+.report-item.high {
+  animation: subtle-pulse 3s infinite;
+}
+
+/* High Contrast Mode for Better Visibility */
+@media (prefers-contrast: high) {
+  .report-item.critical {
+    background-color: #fecaca;
+    border: 3px solid #dc2626;
+  }
+
+  .report-item.high {
+    border-width: 3px;
+  }
+
+  .report-item.medium {
+    border-width: 2px;
+  }
+
+  .report-item.low {
+    border-width: 2px;
+  }
+
+  .report-content {
+    border-width: 2px;
+  }
+
+  .report-content:contains("TRAPPED"),
+  .report-content:contains("SOS"),
+  .report-content:contains("HELP"),
+  .report-content:contains("URGENT"),
+  .report-content:contains("EMERGENCY") {
+    background-color: #fee2e2;
+    border: 3px solid #dc2626;
+    color: #000000;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .user-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dashboard-nav {
+    padding: 0 10px;
+  }
+
+  .dashboard-nav button {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .dashboard-content {
+    padding: 20px 15px;
+  }
+
+  .social-media-monitor {
+    padding: 15px;
+  }
+
+  .monitor-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .monitor-header h2 {
+    font-size: 1.5em;
+  }
+
+  .report-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .reports-list {
+    max-height: 500px;
+  }
+
+  .report-item {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .report-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .report-item::before {
+    font-size: 0.75em;
+    padding: 3px 10px;
+    top: -10px;
+  }
+
+  .priority {
+    padding: 4px 8px;
+    font-size: 0.8em;
+  }
+}
+
+/* Test Panel Styles */
+.test-panel {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.test-panel h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.test-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.input-group select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.test-panel button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.test-panel button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.test-panel button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.status-message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .test-panel {
+    padding: 15px;
+  }
+
+  .test-controls {
+    gap: 10px;
+  }
+}
+
+/* Critical Report Item Styles */
+.report-item.critical {
+  background-color: #fee2e2;
+  border: 2px solid #dc2626;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+  position: relative;
+  overflow: visible;
+}
+
+.report-item.critical::before {
+  content: "EMERGENCY";
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  background-color: #dc2626;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Emergency Message Content Styles */
+.report-item.critical .report-content {
+  background-color: white;
+  color: #dc2626;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+  line-height: 1.6;
+}
+
+/* Special Styling for Emergency Keywords */
+.report-content:contains("TRAPPED"),
+.report-content:contains("SOS"),
+.report-content:contains("HELP"),
+.report-content:contains("URGENT"),
+.report-content:contains("EMERGENCY") {
+  position: relative;
+  background-color: #fff5f5;
+  color: #dc2626;
+  font-weight: 700;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 12px 0;
+  border: 2px solid #dc2626;
+  box-shadow: 0 4px 6px rgba(220, 38, 38, 0.1);
+  font-size: 1.15em;
+  letter-spacing: 0.3px;
+}
+
+/* Emergency Icon for Special Messages */
+.report-content:contains("TRAPPED")::before,
+.report-content:contains("SOS")::before,
+.report-content:contains("HELP")::before,
+.report-content:contains("URGENT")::before,
+.report-content:contains("EMERGENCY")::before {
+  content: "🚨";
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+/* Enhanced Priority Label Styles */
+.priority.critical {
+  background-color: #dc2626;
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.9em;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+}
+
+/* Animation for Emergency Messages */
+@keyframes emergency-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.25);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+  }
+}
+
+.report-item.critical {
+  animation: emergency-pulse 2s infinite;
+}
+
+/* Location Highlight for Trapped Messages */
+.report-content:contains("TRAPPED") {
+  padding-left: 40px;
+  border-left: 4px solid #dc2626;
+}
+
+.report-content:contains("TRAPPED")::after {
+  content: "📍";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4em;
+}
+
+/* Enhanced Meta Information for Critical Reports */
+.report-item.critical .report-meta {
+  background-color: rgba(220, 38, 38, 0.05);
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.report-item.critical .username {
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.report-item.critical .timestamp {
+  font-weight: 600;
+  color: #991b1b;
+}
+
+/* Responsive Design for Emergency Messages */
+@media (max-width: 768px) {
+  .report-item.critical .report-content {
+    font-size: 1.1em;
+    padding: 16px;
+  }
+
+  .report-content:contains("TRAPPED"),
+  .report-content:contains("SOS"),
+  .report-content:contains("HELP"),
+  .report-content:contains("URGENT"),
+  .report-content:contains("EMERGENCY") {
+    padding: 16px;
+    font-size: 1.1em;
+  }
+
+  .report-item.critical::before {
+    font-size: 0.75em;
+    padding: 3px 10px;
+    top: -10px;
+  }
+}
+
+/* High Priority */
+.report-item.high .report-content {
+  background-color: white;
+  color: #000000;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  line-height: 1.5;
+}
+
+/* Medium Priority */
+.report-item.medium .report-content {
+  background-color: white;
+  color: #000000;
+  font-size: 1.05em;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  line-height: 1.5;
+}
+
+/* Low Priority */
+.report-item.low .report-content {
+  background-color: white;
+  color: #000000;
+  font-size: 1em;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  line-height: 1.5;
+}
