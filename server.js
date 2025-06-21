@@ -24,6 +24,8 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
       "https://city-mall-assignment.vercel.app"
     ];
 
+logger.info(`🌐 CORS enabled for: ${allowedOrigins.join(', ')}`);
+
 // Configure CORS for both Express and Socket.IO
 const corsOptions = {
   origin: (origin, callback) => {
@@ -128,7 +130,6 @@ server.listen(PORT, () => {
   logger.info(`🚀 Disaster Response Platform server running on port ${PORT}`);
   logger.info(`📡 WebSocket server initialized and ready for connections`);
   logger.info(`🔗 Health check: http://localhost:${PORT}/health`);
-  logger.info(`🌐 CORS enabled for: ${corsOptions.origin.join(', ')}`);
 });
 
 // Handle WebSocket server errors
