@@ -1,15 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import io from "socket.io-client";
 import TestPanel from "./TestPanel";
-
-// Use environment variables or fallback to localhost for development
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || "http://localhost:5000";
-
-// Log the URLs being used (helpful for debugging)
-console.log('API URL:', API_BASE);
-console.log('Socket URL:', SOCKET_URL);
+import { API_URL } from "../config/api";
+import { createSocket } from "../config/socket";
 
 function SocialMediaMonitor({ user }) {
   const [socket, setSocket] = useState(null);
@@ -23,14 +16,7 @@ function SocialMediaMonitor({ user }) {
 
   // Initialize socket connection
   useEffect(() => {
-    const newSocket = io(SOCKET_URL, {
-      transports: ['websocket', 'polling'],
-      reconnection: true,
-      reconnectionAttempts: 5,
-      reconnectionDelay: 1000,
-      timeout: 10000,
-      withCredentials: true
-    });
+    const newSocket = createSocket();
 
     newSocket.on('connect', () => {
       console.log('Connected to WebSocket');
@@ -130,9 +116,10 @@ function SocialMediaMonitor({ user }) {
   const fetchDisasters = async () => {
     try {
       setError(null);
-      const response = await axios.get(`${API_BASE}/disasters`);
+      const response = await axios.get(`${API_URL}/disasters`);
       setDisasters(response.data.disasters || []);
     } catch (error) {
+      console.error('Error fetching disasters:', error);
       setError("Failed to fetch disasters.");
     }
   };
@@ -142,10 +129,11 @@ function SocialMediaMonitor({ user }) {
     setError(null);
     try {
       const response = await axios.get(
-        `${API_BASE}/social-media?disaster_id=${selectedDisaster}`
+        `${API_URL}/social-media?disaster_id=${selectedDisaster}`
       );
       setSocialMediaReports(response.data.reports || []);
     } catch (error) {
+      console.error('Error fetching social media reports:', error);
       setError("Failed to fetch social media reports.");
       setSocialMediaReports([]);
     } finally {
@@ -157,7 +145,7 @@ function SocialMediaMonitor({ user }) {
     setError(null);
     try {
       const response = await axios.get(
-        `${API_BASE}/disasters/${selectedDisaster}/updates`
+        `${API_URL}/disasters/${selectedDisaster}/updates`
       );
       // Transform updates to match expected format
       const formattedUpdates = (response.data.updates || []).map(update => ({
@@ -171,8 +159,8 @@ function SocialMediaMonitor({ user }) {
       }));
       setOfficialUpdates(formattedUpdates);
     } catch (error) {
-      console.error('Error fetching updates:', error.response?.data || error.message);
-      setError(error.response?.data?.error || "Failed to fetch official updates.");
+      console.error('Error fetching updates:', error);
+      setError("Failed to fetch official updates.");
       setOfficialUpdates([]);
     }
   };

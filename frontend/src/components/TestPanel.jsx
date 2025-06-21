@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import io from 'socket.io-client';
-
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || "http://localhost:5000";
+import { createSocket } from '../config/socket';
 
 // Generate a random test user name
 const generateTestUser = () => {
@@ -31,7 +29,7 @@ function TestPanel({ disasterId }) {
         setSending(true);
         setStatus('Connecting...');
 
-        const socket = io(SOCKET_URL, {
+        const socket = createSocket({
             reconnection: true,
             reconnectionAttempts: 3,
             reconnectionDelay: 1000
